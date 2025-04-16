@@ -41,5 +41,14 @@ def calculate(e):
                     e = e[:i - 1] + [str(round(res, 10))] + e[i + 2:]
                     break
 
+                if op == "-":  # RESTA: ALEJANDRO
+                    if i - 1 < 0 or i + 1 >= len(e):
+                        raise SyntaxError("Sintaxis inválida en la expresión.")
+                    left = float(e[i - 1])
+                    right = float(e[i + 1])
+                    res = left - right
+                    e = e[:i - 1] + [str(round(res, 10))] + e[i + 2:]
+                    break
+
         result = float(e[0])
         return int(result) if result.is_integer() else result
