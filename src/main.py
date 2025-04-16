@@ -18,8 +18,8 @@ def calculate(e):
                     res = left * right
                     e = e[:i - 1] + [str(round(res, 10))] + e[i + 2:]
                     break
-                    
-                if op == "/":  
+
+                if op == "/":
                     if i - 1 < 0 or i + 1 >= len(e):
                         raise SyntaxError("Sintaxis inválida en la expresión.")
                     left = float(e[i - 1])
@@ -27,6 +27,17 @@ def calculate(e):
                     if right == 0:
                         raise ZeroDivisionError("División por cero.")
                     res = left / right
+                    e = e[:i - 1] + [str(round(res, 10))] + e[i + 2:]
+                    break
+
+        while "+" in e or "-" in e:
+            for i, op in enumerate(e):
+                if op == "+":  # SUMA: JOAQUIN
+                    if i - 1 < 0 or i + 1 >= len(e):
+                        raise SyntaxError("Sintaxis inválida en la expresión.")
+                    left = float(e[i - 1])
+                    right = float(e[i + 1])
+                    res = left + right
                     e = e[:i - 1] + [str(round(res, 10))] + e[i + 2:]
                     break
 
