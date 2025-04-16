@@ -10,7 +10,7 @@ def calculate(e):
     def evaluate_expression(e):
         while "*" in e or "/" in e:
             for i, op in enumerate(e):
-                if op == "*": 
+                if op == "*":
                     if i - 1 < 0 or i + 1 >= len(e):
                         raise SyntaxError("Sintaxis inválida en la expresión.")
                     left = float(e[i - 1])
@@ -18,6 +18,7 @@ def calculate(e):
                     res = left * right
                     e = e[:i - 1] + [str(round(res, 10))] + e[i + 2:]
                     break
+                    
                 if op == "/":  
                     if i - 1 < 0 or i + 1 >= len(e):
                         raise SyntaxError("Sintaxis inválida en la expresión.")
